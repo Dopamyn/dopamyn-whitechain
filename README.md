@@ -39,3 +39,13 @@ before the event; last change 2026-04-20). The hackathon work is listed in
   USDT is the supported reward token.
 - Dopamyn app: Whitechain is a campaign chain. Brands fund campaigns in USDT, and
   creators get USDT payouts from QuestManager.
+
+### First campaign on Whitechain (2026-11-05)
+
+A brand launched campaign `15f8fe223e9ecfc4` from the Dopamyn app with a 10 USDT pool
+(11.5 USDT with the service fee).
+
+| Step | Transaction |
+| - | - |
+| Brand approves USDT for QuestManager | [`0xd41dad9e…dc64`](https://explorer.testnet.whitechain.io/tx/0xd41dad9e7c685d58d16e320e8ea29c44a35fca747f39ce720d92fb44f83cdc64) |
+| `createQuest`: 11.5 USDT into escrow | [`0x82040f55…d270`](https://explorer.testnet.whitechain.io/tx/0x82040f552a990711ea056c4d4a77ef471b745813ef1e781f9769899cfbbbd270) |
