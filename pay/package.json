@@ -1,0 +1,18 @@
+{
+  "name": "dopamyn-whitechain-pay",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Pay-per-lookup in USDT on Whitechain with no gas for the payer: LookupPay contract + gas relayer.",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "node scripts/deploy.mjs",
+    "relayer": "node relayer/server.mjs",
+    "pay": "node scripts/pay.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "solc": "0.8.24",
+    "viem": "2.44.4"
+  }
+}

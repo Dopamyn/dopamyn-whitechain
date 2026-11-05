@@ -4,7 +4,15 @@ Dopamyn (https://dopamyn.ai) runs creator campaigns on X. A brand puts a USDT re
 into escrow, creators do tasks (post, reply, quote), Dopamyn verifies the tasks, and the
 contract pays each creator. This repo moves that payout layer to Whitechain.
 
-Status: work in progress for ETHGlobal Mumbai (Whitechain track "Continuity").
+The repo has two parts:
+
+- **Campaign payouts** (repo root): `QuestManager.sol` holds a brand's USDT reward pool
+  and pays creators.
+- **Pay per lookup** ([`pay/`](pay/README.md)): `LookupPay.sol` and a gas relayer. A user
+  or an AI agent pays 0.25 USDT to find how to contact an X account. The payer pays no
+  gas and pays only if a contact is found.
+
+Status: work in progress for ETHGlobal Mumbai (Whitechain tracks "Continuity" and gasless payments).
 
 ## Network
 
@@ -14,6 +22,7 @@ Status: work in progress for ETHGlobal Mumbai (Whitechain track "Continuity").
 | RPC | https://rpc.testnet.whitechain.io |
 | Explorer | https://explorer.testnet.whitechain.io |
 | USDT | `0xcedfB56113143d55b2358b8CFbB0dEB5Ad2f55a7` (6 decimals) |
+| LookupPay | `TODO after deploy` (see [`pay/`](pay/README.md)) |
 | QuestManager | [`0x89f2C6AD55fa6747A7b3985bC4A5aF319fe30B6E`](https://explorer.testnet.whitechain.io/address/0x89f2C6AD55fa6747A7b3985bC4A5aF319fe30B6E#code) (verified) |
 
 ## Setup
