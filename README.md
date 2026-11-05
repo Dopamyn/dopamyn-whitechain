@@ -14,7 +14,7 @@ Status: work in progress for ETHGlobal Mumbai (Whitechain track "Continuity").
 | RPC | https://rpc.testnet.whitechain.io |
 | Explorer | https://explorer.testnet.whitechain.io |
 | USDT | `0xcedfB56113143d55b2358b8CFbB0dEB5Ad2f55a7` (6 decimals) |
-| QuestManager | not deployed yet |
+| QuestManager | [`0x89f2C6AD55fa6747A7b3985bC4A5aF319fe30B6E`](https://explorer.testnet.whitechain.io/address/0x89f2C6AD55fa6747A7b3985bC4A5aF319fe30B6E#code) (verified) |
 
 ## Setup
 
@@ -34,3 +34,8 @@ before the event; last change 2026-04-20). The hackathon work is listed in
 ## During the hackathon
 
 - Whitechain Sepolia deploy + Blockscout verification config.
+- QuestManager deployed and verified on Whitechain Sepolia:
+  [`0x89f2C6AD55fa6747A7b3985bC4A5aF319fe30B6E`](https://explorer.testnet.whitechain.io/address/0x89f2C6AD55fa6747A7b3985bC4A5aF319fe30B6E#code).
+  USDT is the supported reward token.
+- Dopamyn app: Whitechain is a campaign chain. Brands fund campaigns in USDT, and
+  creators get USDT payouts from QuestManager.
