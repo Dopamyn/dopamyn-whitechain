@@ -11,7 +11,7 @@ import {
   isAddress, isHex, parseEther, parseSignature, verifyTypedData,
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import { EXPLORER_URL, USDT, lookupPayAbi, receiveTypes, usdtAbi, usdtDomain, whitechainSepolia } from "../lib.mjs";
+import { EXPLORER_URL, USDT, envKey, lookupPayAbi, receiveTypes, usdtAbi, usdtDomain, whitechainSepolia } from "../lib.mjs";
 
 const env = (name, fallback) => {
   const value = process.env[name] ?? fallback;
@@ -27,7 +27,7 @@ const MAX_WINDOW_SECONDS = Number(env("MAX_WINDOW_SECONDS", "3600"));
 const MIN_SECONDS_LEFT = 60; // time we need to get the transaction mined
 const LOW_WBT = parseEther(env("LOW_WBT", "0.05"));
 
-const account = privateKeyToAccount(env("RELAYER_PRIVATE_KEY"));
+const account = privateKeyToAccount(envKey("RELAYER_PRIVATE_KEY"));
 const reader = createPublicClient({ chain: whitechainSepolia, transport: viemHttp() });
 const writer = createWalletClient({ account, chain: whitechainSepolia, transport: viemHttp() });
 

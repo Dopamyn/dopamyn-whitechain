@@ -8,8 +8,8 @@ Pay-per-lookup in USDT on Whitechain. The payer pays no gas and sees no crypto s
 
 - Network: Whitechain Sepolia, chain ID 1874
 - USDT: `0xcedfB56113143d55b2358b8CFbB0dEB5Ad2f55a7` (Tether `TetherTokenV2`, 6 decimals, EIP-2612 and EIP-3009)
-- LookupPay: `TODO after deploy`
-- First real USDT payment: `TODO explorer link`
+- LookupPay: [`0xE96fd8A2f6F07233A3148F172405234a34f46d2e`](https://explorer.testnet.whitechain.io/address/0xe96fd8a2f6f07233a3148f172405234a34f46d2e#code) (verified)
+- First real USDT payment: [`0x063e767e…f2c8`](https://explorer.testnet.whitechain.io/tx/0x063e767edd6a0c2c3d2d55dd3da5ed9fe33b6c76fe38e9cbdd446bb6e7a8f2c8). The payer wallet `0xA845…B372` holds 0 WBT. It signed 0.25 USDT, and the relayer `0x1261…38b4` sent the transaction and paid the gas.
 
 ## How it works
 
@@ -32,7 +32,7 @@ Pay-per-lookup in USDT on Whitechain. The payer pays no gas and sees no crypto s
 
 ## Gas, WBT and drain protection (Track 3 questions)
 
-**How the business pays gas.** The relayer key holds WBT and sends every `pay()` transaction. The payer only signs. The price includes the gas: `TODO measured gas per pay()` WBT per payment.
+**How the business pays gas.** The relayer key holds WBT and sends every `pay()` transaction. The payer only signs. The price includes the gas. The first `pay()` used 108,731 gas, which cost 0.00054 WBT.
 
 **How the relayer gets WBT.** On testnet it gets WBT from the faucet. `GET /health` returns the WBT balance and a `low` flag below `LOW_WBT`. On mainnet, the plan is to swap part of the USDT in `LookupPay` to WBT on a Whitechain DEX and top up the relayer. That swap is not built.
 
@@ -53,21 +53,21 @@ Pay-per-lookup in USDT on Whitechain. The payer pays no gas and sees no crypto s
 ```bash
 cd pay
 npm install
-cp .env.example .env   # fill in the keys
+cp .env.example .env   # wallet keys default to PRIVATE_KEY in ../.env
 npm test               # compiles the contract, checks signing and the token's EIP-712 domain on chain
 ```
 
 Deploy and verify `LookupPay` (the deployer needs WBT from the faucet):
 
 ```bash
-node --env-file=.env scripts/deploy.mjs
+node --env-file=../.env --env-file=.env scripts/deploy.mjs
 ```
 
 Run the relayer (its key needs WBT), then pay once from a wallet that holds USDT and no WBT:
 
 ```bash
-node --env-file=.env relayer/server.mjs
-node --env-file=.env scripts/pay.mjs
+node --env-file=../.env --env-file=.env relayer/server.mjs
+node --env-file=../.env --env-file=.env scripts/pay.mjs
 ```
 
 ## Files

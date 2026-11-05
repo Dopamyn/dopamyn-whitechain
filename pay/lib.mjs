@@ -63,3 +63,10 @@ export async function signPayment(account, { to, value, windowSeconds = 900 }) {
   const json = Object.fromEntries(Object.entries(authorization).map(([k, v]) => [k, typeof v === "bigint" ? v.toString() : v]));
   return { authorization: json, signature };
 }
+
+/** A wallet key from env. Falls back to PRIVATE_KEY, the repo's deployer key in ../.env. */
+export function envKey(name) {
+  const key = process.env[name] || process.env.PRIVATE_KEY;
+  if (!key) throw new Error(`missing env ${name} (or PRIVATE_KEY)`);
+  return key.startsWith("0x") ? key : `0x${key}`;
+}

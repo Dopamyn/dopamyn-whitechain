@@ -5,7 +5,7 @@ import { readFileSync } from "node:fs";
 import solc from "solc";
 import { createPublicClient, createWalletClient, encodeAbiParameters, http } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import { EXPLORER_URL, USDT, whitechainSepolia } from "../lib.mjs";
+import { EXPLORER_URL, USDT, envKey, whitechainSepolia } from "../lib.mjs";
 
 const SOURCE = "contracts/LookupPay.sol";
 const price = BigInt(process.env.PRICE_UNITS || "250000"); // 0.25 USDT, 6 decimals
@@ -24,7 +24,7 @@ const errors = (output.errors || []).filter((e) => e.severity === "error");
 if (errors.length) throw new Error(errors.map((e) => e.formattedMessage).join("\n"));
 const { abi, evm } = output.contracts[SOURCE].LookupPay;
 
-const account = privateKeyToAccount(process.env.DEPLOYER_PRIVATE_KEY);
+const account = privateKeyToAccount(envKey("DEPLOYER_PRIVATE_KEY"));
 const reader = createPublicClient({ chain: whitechainSepolia, transport: http() });
 const writer = createWalletClient({ account, chain: whitechainSepolia, transport: http() });
 

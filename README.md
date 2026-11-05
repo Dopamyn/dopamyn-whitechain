@@ -22,7 +22,7 @@ Status: work in progress for ETHGlobal Mumbai (Whitechain tracks "Continuity" an
 | RPC | https://rpc.testnet.whitechain.io |
 | Explorer | https://explorer.testnet.whitechain.io |
 | USDT | `0xcedfB56113143d55b2358b8CFbB0dEB5Ad2f55a7` (6 decimals) |
-| LookupPay | `TODO after deploy` (see [`pay/`](pay/README.md)) |
+| LookupPay | [`0xE96fd8A2f6F07233A3148F172405234a34f46d2e`](https://explorer.testnet.whitechain.io/address/0xe96fd8a2f6f07233a3148f172405234a34f46d2e#code) (verified, see [`pay/`](pay/README.md)) |
 | QuestManager | [`0x89f2C6AD55fa6747A7b3985bC4A5aF319fe30B6E`](https://explorer.testnet.whitechain.io/address/0x89f2C6AD55fa6747A7b3985bC4A5aF319fe30B6E#code) (verified) |
 
 ## Setup
